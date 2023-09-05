@@ -1,14 +1,17 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Card(props) {
     let CardName = `color_bg ${props.alt}`
     let bg_img = `url(${props.images})`
-    let { title, newPrice, dollar, description } = props
+    let { title, newPrice, dollar, description, productslug } = props
     const navigate = useNavigate();
     return (
 
         <div className="card">
+            <Link to={'/products/' + {productslug}}>
+                      <div className="btn">View Details</div>
+                   </Link>
             <div className="wrapper">
                 <div className={CardName}></div>
                 <div className="card_img" style={{ "backgroundImage": bg_img }}></div>
@@ -25,7 +28,9 @@ export default function Card(props) {
                         <div className="priceGroup">
                             <p className="price newPrice">{dollar}{newPrice}</p>
                         </div>
-                        <div className="cart" onClick={() => navigate('about')}>
+                        
+                        <div className="cart" onClick={() => navigate('{about}')}>
+                        
                             <svg className="outCart" xmlns="<http://www.w3.org/2000/svg>" viewBox="0 0 64 64">
                                 <path d="M2 6h10l10 40h32l8-24H16"></path>
                                 <circle cx="23" cy="54" r="4"></circle>

@@ -20,23 +20,27 @@ useEffect(() => {
 }, []);
 
 const runItems = apiTest.map((run) =>
-        <div key={run.id} >
+        
     
                <Card
+                key={run.id}
                 title={run.name}
                 images={run.get_image}
                 description={run.description}
                 newPrice={run.price}
-                alt='green'
+                productslug={run.get_absolute_url}
+                alt='black'
                 dollar="$"
         />
            
-        </div>
+       
          );
     return( 
         <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
                     <h1 className="border-b-2 pb-4">Payroll Runs</h1>
-                    <div className="grow overflow-auto p-4">{runItems}</div>
+                    <div className="row">
+                        {runItems}
+                        </div>
                 </div>
     )
 

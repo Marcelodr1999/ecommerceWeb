@@ -232,11 +232,10 @@ li{
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
+
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+      justify-content: space-evenly;
 }
 
 .card {
