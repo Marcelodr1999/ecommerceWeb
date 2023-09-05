@@ -76,7 +76,7 @@ li{
 }
 
 .body-background{
-    background-image: url(img/foodimage.png);
+
     background-size:cover;
     background-repeat: no-repeat; 
    
@@ -122,7 +122,40 @@ li{
     border: 0.1rem solid rgb(75, 71, 71);
 }
 
-
+.inputStyle{
+  font-family: 'Roboto', sans-serif;
+  color: rgb(76, 0, 255);
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  border: none;
+  outline: 0;
+  border-bottom: 2px solid rgb(76, 0, 255);
+  background-color: rgb(255, 255, 255);
+  width: 50%;
+  height: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+.inputStyle-edit{
+    font-family: 'Roboto', sans-serif;
+    color: rgb(76, 0, 255);
+    font-size: 1.2rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(76, 0, 255);
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    height: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+  }
 
 
 .submit-button {
@@ -134,7 +167,29 @@ li{
     font: 100% 'Orbitron', sans-serif;
 }
 
+.submitStyle{
+  height: 3rem;
+  width:20vh;
+  padding: 5%, 10%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(76, 0, 255);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  font: 500 0.7rem 'Orbitron', sans-serif;
+  border: 1.5px solid rgb(76, 0, 255);
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+   
+}
 
+.submitStyle:hover{
+  cursor: pointer;
+  background-color: rgb(76, 0, 255);
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+}
 .close {
     color: #aaa;
     float: right;
@@ -151,7 +206,12 @@ li{
 
 
 
-
+.form-div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
 
 
 .container {

@@ -7,6 +7,9 @@ import Card from './components/Card'
 import Products from './components/Products'
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 import ProductDetail from './pages/ProductDetail'
+import LoginPage from './pages/LoginPage';
+import Register from './components/Register'
+
 function App() {
 
   return (
@@ -15,6 +18,9 @@ function App() {
         <Route path="/" element={<Products />} />
           <Route path="/products" element={<Products />} />
           <Route path="/about" element={<ProductDetail />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
     
     </>

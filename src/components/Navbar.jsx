@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-
+import LogoutButton from './Logout';
 
 const Navbar = () => {
     return (
@@ -39,6 +39,7 @@ const Navbar = () => {
          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
        </form>
+       <LogoutButton />
      </div>
    </nav>
    </>
