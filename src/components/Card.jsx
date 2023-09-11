@@ -1,14 +1,11 @@
 import React from 'react'
-import { useNavigate, Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function Card(props) {
     let CardName = `color_bg ${props.alt}`
     let bg_img = `url(${props.images})`
     let { title, newPrice, dollar, description, productslug } = props
     const slug = productslug.replaceAll('/', '_')
-    // console.log(slug)
-    const navigate = useNavigate();
-    // console.log({pslug})
+
     return (
 
         <div className="card">

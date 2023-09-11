@@ -4,11 +4,12 @@ import DetailsCard from "../components/DetailsCard";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
 import Products from "../components/Products";
+import FilteredApi from "../components/FIlteredApi";
 function FilteredPage () {
     let { cat } = useParams();
     return <>
-        
-       <Products />
+        <Navbar/>
+       <FilteredApi />
     These are {cat}       
 
     </>

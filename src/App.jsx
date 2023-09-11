@@ -9,7 +9,6 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams } from 'react-ro
 import ProductDetail from './pages/ProductDetail'
 import LoginPage from './pages/LoginPage';
 import Register from './components/Register'
-import DetailsCard from './components/DetailsCard'
 import FilteredPage from './pages/FilteredPage'
 function BlogPost() {
   let { id } = useParams();
@@ -24,7 +23,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Products />} />
           {/* <Route path="/products" element={<Products />} /> */}
-          <Route path="/about" element={<ProductDetail />} />
+          {/* <Route path="/about" element={<ProductDetail />} /> */}
           <Route path="/products/:productslug" element={<ProductDetail />} />
           <Route path="/:cat" element={<FilteredPage />} />
           <Route path="/login" element={<LoginPage />} />

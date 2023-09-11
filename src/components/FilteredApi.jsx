@@ -1,15 +1,14 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import Card from "./Card";
-import { useParams, Link } from "react-router-dom";
-const Api = () => {
+const FilteredApi = () => {
     const [apiTest, setapiTest] = useState([]);
- 
-    
+    const url = window.location.href.split('/')
+    const catUrl = url[3];
 useEffect(() => {
 
   // Fetch the Payroll Data related to the logged in User
-  fetch(`http://127.0.0.1:8000/products/latest-products/`, {
+  fetch(`http://127.0.0.1:8000/products/products/${catUrl}/`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -18,7 +17,7 @@ useEffect(() => {
   })
   .then(res => res.json())
   .then(data => {
-    setapiTest(data)
+    setapiTest(data.products)
     });
 }, []);
 const runItems = apiTest.map((run) =>
@@ -42,18 +41,7 @@ const runItems = apiTest.map((run) =>
     return( 
         <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
                     <h1 className="border-b-2 pb-4">Payroll Runs</h1>
-                    <ul>
-                    {apiTest.map((cats) => {
-                        let prodslugs = cats.get_absolute_url.split('/');
-                        let categories = prodslugs[1];
-
-                        return (
-                            <li key={cats.id}>
-                            <Link to={categories}>{categories}</Link>
-                          </li>
-                        );
-                    })}
-                    </ul>
+                   
                     <div className="row">
                         {runItems}
                     </div>
@@ -62,4 +50,4 @@ const runItems = apiTest.map((run) =>
 
 
 } 
-export default Api
+export default FilteredApi
