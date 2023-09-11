@@ -1,12 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import DetailsCard from "../components/DetailsCard";
+import Card from "../components/Card";
 function ProductDetail () {
-    return <div>
+    
+    return <>
         <Navbar />
-        
+       
         <DetailsCard />
-    </div>
+    </>
 }
 
 export default ProductDetail

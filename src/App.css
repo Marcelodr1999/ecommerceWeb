@@ -74,7 +74,18 @@ li{
     font-size: 2rem;
    
 }
-
+.product-style{
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  flex-direction: row;
+  margin-top: 2%;
+  
+}
+.productimg{
+  width: 60%;
+  margin-right: 3%;
+}
 .body-background{
 
     background-size:cover;

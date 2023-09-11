@@ -1,15 +1,17 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 export default function Card(props) {
     let CardName = `color_bg ${props.alt}`
     let bg_img = `url(${props.images})`
     let { title, newPrice, dollar, description, productslug } = props
+    const slug = productslug.replaceAll('/', '_')
+    // console.log(slug)
     const navigate = useNavigate();
     return (
 
         <div className="card">
-            <Link to={'/products/' + {productslug}}>
+            <Link to={`/products/${slug}`}>
                       <div className="btn">View Details</div>
                    </Link>
             <div className="wrapper">
@@ -28,8 +30,8 @@ export default function Card(props) {
                         <div className="priceGroup">
                             <p className="price newPrice">{dollar}{newPrice}</p>
                         </div>
-                        
-                        <div className="cart" onClick={() => navigate('{about}')}>
+                        <Link to={`/products/${slug}`}>
+                        <div className="cart" >
                         
                             <svg className="outCart" xmlns="<http://www.w3.org/2000/svg>" viewBox="0 0 64 64">
                                 <path d="M2 6h10l10 40h32l8-24H16"></path>
@@ -37,9 +39,10 @@ export default function Card(props) {
                                 <circle cx="49" cy="54" r="4"></circle>
                             </svg>
                         </div>
+                        </Link>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+};
