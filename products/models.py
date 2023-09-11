@@ -20,7 +20,7 @@ class Products(models.Model):
     stock = models.IntegerField()
     slug = models.SlugField()
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name
