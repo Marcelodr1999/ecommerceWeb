@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import DetailsCard from "../components/DetailsCard";
-import { useParams } from "react-router-dom";
+import Card from "../components/Card";
 function ProductDetail () {
-    let { slug } = useParams();
-    return <div>
+    
+    return <>
         <Navbar />
-        
+       
         <DetailsCard />
-    </div>
+    </>
 }
 
 export default ProductDetail

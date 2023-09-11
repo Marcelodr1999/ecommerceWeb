@@ -4,16 +4,15 @@ import Api from "./Api";
 import Card from "./Card";
 export default function DetailsCard (props)  {
     const [apiTest, setapiTest] = useState([]);
-    let { pslug } = props;
-    let { s } = useParams();
-    let category = '/23432/2/';
-    let product = `${pslug}`;
-   
-    // console.log(pslug);
+    
+    let category = 'shirt/white_shirt/';
+    let product = '2';
+    let { productslug } = useParams();
 useEffect(() => {
    
+    // console.log(productslug)
   // Fetch the Payroll Data related to the logged in User
-  fetch(`http://127.0.0.1:8000/products/products${product}`, {
+  fetch(`http://127.0.0.1:8000/products/products${productslug.replaceAll('_', '/')}`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -24,17 +23,25 @@ useEffect(() => {
   .then(data => {
     setapiTest(data)
     });
-}, []);
-    
+}, [productslug]);
          return (
-             
-            <div>
-
-                <h1>{apiTest.name}</h1>
-                <p>{apiTest.description}</p>
-                <p>{apiTest.price}</p>
+             <>
+             <body>
+            <div className="product-style">
+                <img className= "productimg" src = {apiTest.get_image} />
+                <div className="">
+                    <h1>Information</h1>
+                    <p>Price: ${apiTest.price}</p>
+                    <input />
+                    <button />
+                </div>
             </div>
-
+            <div>
+            <h1>{apiTest.name}</h1>
+                <p>{apiTest.description}</p>
+            </div>
+            </body>
+            </>
          )
 }
 // export default DetailsCard;
