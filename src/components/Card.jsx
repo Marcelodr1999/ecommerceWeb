@@ -4,14 +4,18 @@ import { useNavigate, Link } from 'react-router-dom';
 export default function Card(props) {
     let CardName = `color_bg ${props.alt}`
     let bg_img = `url(${props.images})`
-    let { title, newPrice, dollar, description, productslug } = props
+    let { title, newPrice, dollar, description, pslug } = props
+
+    
     const navigate = useNavigate();
+    // console.log({pslug})
     return (
 
         <div className="card">
-            <Link to={'/products/' + {productslug}}>
+            
+            <Link to={`/products${pslug}`}>
                       <div className="btn">View Details</div>
-                   </Link>
+            </Link>
             <div className="wrapper">
                 <div className={CardName}></div>
                 <div className="card_img" style={{ "backgroundImage": bg_img }}></div>
