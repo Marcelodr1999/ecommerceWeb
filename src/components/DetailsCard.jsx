@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { useParams } from 'react-router-dom';
-
+import { useCart } from "./Cart";
 const DetailsCard = () =>  {
     const [apiTest, setapiTest] = useState([]);
     let { productslug } = useParams();
@@ -20,15 +20,24 @@ useEffect(() => {
     setapiTest(data)
     });
 }, [productslug]);
+
+// const [cart, setCart] = useState([]);
+const { addToCart } = useCart();
+
+const addToCartHandler = () => {
+    addToCart(apiTest.id, apiTest.price, apiTest.name); // Pass the product ID to addToCart
+  };
+  
          return (
              <>
             <div className="product-style">
                 <img className= "productimg" src = {apiTest.get_image} />
                 <div className="">
                     <h1>Information</h1>
+                    {apiTest.id}
                     <p>Price: ${apiTest.price}</p>
-                    <input value = "1"/>
-                    <button>Add To Cart</button>
+                    <input defaultValue = "1"/>
+                    <button onClick = {addToCartHandler}>Add To Cart</button>
                 </div>
             </div>
             <div>

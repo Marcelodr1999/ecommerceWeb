@@ -10,6 +10,9 @@ import ProductDetail from './pages/ProductDetail'
 import LoginPage from './pages/LoginPage';
 import Register from './components/Register'
 import FilteredPage from './pages/FilteredPage'
+import { CartProvider } from './components/Cart'
+import CartItems from './components/CartItems'
+
 function BlogPost() {
   let { id } = useParams();
   return <div style={{ fontSize: "50px" }}>
@@ -19,7 +22,7 @@ function BlogPost() {
 function App() {
 
   return (
-    <>
+    <CartProvider>
         <Routes>
         <Route path="/" element={<Products />} />
           {/* <Route path="/products" element={<Products />} /> */}
@@ -27,11 +30,12 @@ function App() {
           <Route path="/products/:productslug" element={<ProductDetail />} />
           <Route path="/:cat" element={<FilteredPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/cart" element={<CartItems />} />
           <Route path="/register" element={<Register />} />
 
         </Routes>
     
-    </>
+    </ CartProvider>
   )
 }
 

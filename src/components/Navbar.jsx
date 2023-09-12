@@ -1,6 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import LogoutButton from './Logout';
+import { useCart } from './Cart';
 const Navbar = () => {
+  const { cart } = useCart();
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+
     return (
         <>
               {/* <NavLink to="/products">Products</NavLink> */}
@@ -34,10 +38,12 @@ const Navbar = () => {
            <a className="nav-link disabled" href="#">Disabled</a>
          </li>
        </ul>
+       <Link to = "/cart">
        <div className="cartHeader">
-        <span className="countCart">0</span>
+        <span className="countCart">{totalQuantity}</span>
         <i className="material-symbols-outlined">shopping_cart</i>
       </div>
+      </Link>
        <form className="form-inline my-2 my-lg-0">
          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
