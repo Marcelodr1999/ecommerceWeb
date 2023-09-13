@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 const Checkout = () => {
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        password2: '',
         firstName: '',
         lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+        zip: '',
+        
       });
 
     const handleChange = (e) => {
@@ -17,72 +18,131 @@ const Checkout = () => {
         setFormData({ ...formData, [name]: value });
       };
     
+
       const handleSubmit = async (e) => {
         e.preventDefault();
+      
+
+
+      const cartCheck = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        zipcode: formData.zip,
+        
       }
+      try {
+        // Send registration data to the server
+        const response = await fetch('http://127.0.0.1:8000/order/orders/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(cartCheck),
+        });
+    
+        // Handle server response
+        if (response.ok) {
+          // Registration successful
+          window.location.href = "http://localhost:5173/";
+          console.log('Order successful.');
+        } else {
+          console.log("failed to order");
+          const data = await response.json();
+          if (data && data.error) {
+            console.log(data.error); // Display the specific error message from the server.
+          } else {
+            console.log('Order failed.'); // Display a generic error message.
+          }
+        }
+      } catch (error) {
+        console.error('Order error:', error);
+        console.log('order failed.');
+      }
+  };
+
+
   return (
     <>
 
     <div>
       <CartItems />
       <form onSubmit={handleSubmit}>
-      <div className='form-div'> 
-        <label>Username:</label>
-        <input
-          className="inputStyle"
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-
-        <label>First Name:</label>
-        <input
-          className="inputStyle"
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-        />
-
+      <div className='form-row'> 
+      
+          <div className="form-group">
+            <label htmlFor="fname">First Name:</label>
+            <input
+            id='fname'
+              className="form-control"
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
         <label>Last Name:</label>
         <input
-          className="inputStyle"
+          className="form-control"
           type="text"
           name="lastName"
           value={formData.lastName}
           onChange={handleChange}
         />
-
-        <label>Email:</label>
-        <input
-          className="inputStyle"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-   
-        <label>Password:</label>
-        <input
-          className="inputStyle"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-
-        <label>Confirm Password:</label>
-        <input
-          className="inputStyle"
-          type="password"
-          name="password2"
-          value={formData.password2}
-          onChange={handleChange}
-        />
-      
-      <button className='submitStyle' type="submit">Register</button>
+        </div>
+        </div>
+      <div className="form-row">
+       
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor = "phone" >Phone:</label>
+          <input
+            id="phone"
+            className="form-control"
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+          </div>
       </div>
+      <div className='form-row'>
+      <div className='form-group'>
+        <label>Address:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+        />
+        </div>
+        <div className='form-group'>
+
+        <label>Zip Code:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="zip"
+          value={formData.zip}
+          onChange={handleChange}
+        />
+        </div>  
+      </div>
+      <button className='submitStyle' type="submit">Order</button>
+     
     </form>
     </div>
     </>

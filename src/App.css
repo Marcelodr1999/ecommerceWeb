@@ -85,6 +85,7 @@ li{
 .productimg{
   width: 60%;
   margin-right: 3%;
+  object-fit: cover;
 }
 .body-background{
 
@@ -168,23 +169,6 @@ li{
   margin-bottom: 1rem;
   transition: all 0.3s;
 }
-.inputStyle-edit{
-    font-family: 'Roboto', sans-serif;
-    color: rgb(76, 0, 255);
-    font-size: 1.2rem;
-    margin: 0 auto;
-    padding: 1.5rem 2rem;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid rgb(76, 0, 255);
-    border-radius: 0.2rem;
-    background-color: rgb(255, 255, 255);
-    width: 40%;
-    height: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-    transition: all 0.3s;
-  }
 
 
 .submit-button {
@@ -501,4 +485,32 @@ li{
   text-align: left;
   border-bottom: 1px solid #ddd;
   font-size: large;
+}
+
+.checkoutStyle{
+  font-family: 'Roboto', sans-serif;
+  color: rgb(76, 0, 255);
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;    
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+label {
+  
+  display: inline-block;
+ margin-bottom: 5px;
+ font-size: 1rem;
+ font-weight: 600;
+}
+.form-group{
+  padding: 5px;
+  width: 70vh;
+}
+.form-row {
+  display: flex;
 }

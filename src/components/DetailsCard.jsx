@@ -34,7 +34,7 @@ const addToCartHandler = () => {
                 <img className= "productimg" src = {apiTest.get_image} />
                 <div className="">
                     <h1>Information</h1>
-                    {apiTest.id}
+                    
                     <p>Price: ${apiTest.price}</p>
                     <input defaultValue = "1"/>
                     <button onClick = {addToCartHandler}>Add To Cart</button>
