@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-#4!c54)bz^(px5+089wv8a+&^l7oas*p5zomfh@30d7q2yq4)*
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'http://localhost:5173/']
-
+STRIPE_PUBLISHABLE_KEY = '<your test publishable key here>'
+STRIPE_SECRET_KEY = 'sk_test_51NptzAHOlnUvHrsL1NSZKX8cfPJFkh4V1Lhsv7RI4EZaiudBKZBizLNbnhZQWGBJXVevi0hFMNrbWLk6riBOo6lG00jPzQK0Py'
 
 # Application definition
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'products.apps.ProductsConfig',
+    'order.apps.OrderConfig',
     'register.apps.RegisterConfig',
 ]
 
