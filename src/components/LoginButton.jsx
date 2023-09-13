@@ -4,8 +4,8 @@ function LoginButton() {
     
   return (
     <>
-    <Link to="/login"><button className='btn btn-outline-success my-2 my-sm-0'>Login</button></Link>
-    <Link to="/register"><button className='btn btn-outline-success my-2 my-sm-0'>Register</button></Link>
+    <Link to="/login"><button className='btn btn-outline-success ml-2 my-2 my-sm-0'>Login</button></Link>
+    <Link to="/register"><button className='btn btn-outline-success ml-2 my-2 my-sm-0'>Register</button></Link>
     </>
   );
 }

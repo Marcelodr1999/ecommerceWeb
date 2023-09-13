@@ -9,12 +9,12 @@ function LogoutButton() {
   };
 
   // Check if a token is present in localStorage
-  const isAuthenticated = !!localStorage.getItem('authToken');
+  const isAuthenticated = localStorage.getItem('authToken');
 
   // Conditionally render the login or logout button
   if (isAuthenticated) {
     return (
-      <button onClick={handleLogout}>Logout</button>
+      <button className="btn btn-outline-danger ml-2 my-2 my-sm-0" onClick={handleLogout}>Logout</button>
     );
   } else {
     return (

@@ -9,6 +9,10 @@ function FilteredPage () {
     let { cat } = useParams();
     return <>
         <Navbar/>
+        <div className= "landingStyle"> 
+        <h1 className="landingText">Welcome to this site.</h1>
+        <h2>What's New!</h2>
+        </div>
        <FilteredApi />
     These are {cat}       
 

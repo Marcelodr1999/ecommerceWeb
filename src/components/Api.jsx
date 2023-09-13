@@ -38,27 +38,32 @@ const runItems = apiTest.map((run) =>
            
         
          );
-         
-    return( 
-        <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
-                    <h1 className="border-b-2 pb-4">Payroll Runs</h1>
-                    <ul>
-                    {apiTest.map((cats) => {
-                        let prodslugs = cats.get_absolute_url.split('/');
-                        let categories = prodslugs[1];
 
-                        return (
-                            
-                            <li key={cats.id}>
-                            <Link to={categories}>{categories}</Link>
-                          </li>
-                        );
-                    })}
+    const uniqueCategories = new Set();
+    apiTest.map((cats) => {
+      let prodslugs = cats.get_absolute_url.split('/');
+      let categories = prodslugs[1];
+      uniqueCategories.add(categories);    
+
+    });
+    const uniqueCategoriesArray = Array.from(uniqueCategories);
+    return ( 
+        <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
+                    <h1 className="border-b-2 pb-4">Filter</h1>
+                    <ul>
+
+                     {uniqueCategoriesArray.map((category) => (
+                      <li key={category}>
+                        <Link to={`/${category}`}>{category}</Link>
+                      </li>
+                      ))}
+
                     </ul>
                     <div className="row">
                         {runItems}
                     </div>
-                </div>
+
+        </div>
     )
 
 

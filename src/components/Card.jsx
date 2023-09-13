@@ -9,9 +9,7 @@ export default function Card(props) {
     return (
 
         <div className="card">
-            <Link to={`/products/${slug}`}>
-                      <div className="btn">View Details</div>
-            </Link>
+        
             <div className="wrapper">
                 <div className={CardName}></div>
                 <div className="card_img" style={{ "backgroundImage": bg_img }}></div>

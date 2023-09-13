@@ -17,14 +17,22 @@ const CartButtons = ({ item }) => {
   };
 
   return (
-    <div>
-      <h3>{item.productName}</h3>
-      <p>Quantity: {item.quantity}</p>
-      <p>Price: ${item.price}</p>
-      <button onClick={handleIncrease}>Increase</button>
-      <button onClick={handleDecrease}>Decrease</button>
-      <button onClick={handleRemove}>Remove</button>
-    </div>
+
+  <>
+    
+        <td>{item.productName}</td>
+        <td>
+        {item.quantity}  
+          <button className="btn btn-danger btn-number" onClick={handleDecrease}>-</button>
+          <button className="btn btn-success btn-number" onClick={handleIncrease}>+</button>
+        
+      
+        </td>
+        <td>${item.price}</td>
+        <td><button className="btn btn-danger btn-number" onClick={handleRemove}>X</button></td>
+   
+        </>
+
   );
 };
 
