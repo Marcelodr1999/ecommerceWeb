@@ -12,36 +12,31 @@ from rest_framework.response import Response
 
 from .models import Order, OrderItem
 from .serializers import OrderSerializer, MyOrderSerializer
+import logging
+
+logger = logging.getLogger(__name__)
 
 @api_view(['POST'])
-# @authentication_classes([authentication.TokenAuthentication])
-# @permission_classes([permissions.IsAuthenticated])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
 def checkout(request):
     serializer = OrderSerializer(data=request.data)
-
+   
     if serializer.is_valid():
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        paid_amount = sum(item.get('quantity') * item.get('product').price for item in serializer.validated_data['items'])
-
         try:
-            charge = stripe.Charge.create(
-                amount=int(paid_amount * 100),
-                currency='USD',
-                description='Charge from Djackets',
-                source=serializer.validated_data['stripe_token']
-            )
-
-            serializer.save(user=request.user, paid_amount=paid_amount)
+            user_id = request.user.id
+            serializer.save(user_id=user_id)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        except Exception as e:
+            logger.error(str(e))  # Log the error message
+            return Response({"error": "An error occurred while processing your request."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class OrdersList(APIView):
-    
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
     def get(self, request, format=None):
-        orders = Order.objects.all()
+        orders = Order.objects.filter(user=request.user)
         serializer = MyOrderSerializer(orders, many=True)
         return Response(serializer.data)
