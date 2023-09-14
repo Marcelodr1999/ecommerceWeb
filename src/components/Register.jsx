@@ -66,56 +66,59 @@ function RegistrationForm() {
     <Navbar />
     <form onSubmit={handleSubmit}>
       <div className='form-div'> 
-        <label>Username:</label>
+        <h1>Register</h1>
+       
         <input
+        
           className="inputStyle"
           type="text"
           name="username"
           value={formData.username}
+          placeholder='Username'
           onChange={handleChange}
         />
 
-        <label>First Name:</label>
         <input
           className="inputStyle"
           type="text"
           name="firstName"
+          placeholder='First Name'
           value={formData.firstName}
           onChange={handleChange}
         />
 
-        <label>Last Name:</label>
         <input
           className="inputStyle"
           type="text"
           name="lastName"
+          placeholder='Last Name'
           value={formData.lastName}
           onChange={handleChange}
         />
 
-        <label>Email:</label>
         <input
           className="inputStyle"
           type="email"
           name="email"
+          placeholder='Email'
           value={formData.email}
           onChange={handleChange}
         />
    
-        <label>Password:</label>
         <input
           className="inputStyle"
           type="password"
           name="password"
+          placeholder='Password'
           value={formData.password}
           onChange={handleChange}
         />
 
-        <label>Confirm Password:</label>
         <input
           className="inputStyle"
           type="password"
           name="password2"
+          placeholder='Confirm Password'
           value={formData.password2}
           onChange={handleChange}
         />

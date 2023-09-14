@@ -40,7 +40,7 @@ const runItems = apiTest.map((run) =>
          
     return( 
         <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
-                    <h1 className="border-b-2 pb-4">Payroll Runs</h1>
+                    <h1 className="border-b-2 pb-4">{catUrl}</h1>
                    
                     <div className="row">
                         {runItems}

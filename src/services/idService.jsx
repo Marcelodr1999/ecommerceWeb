@@ -2,7 +2,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 
-const IdRetrieve = () => {
+const IdRetrieve = ({onRetrieveComplete}) => {
     const [userName, setuserName] = useState(null);
     useEffect(() => {
 
@@ -21,7 +21,9 @@ const IdRetrieve = () => {
 
 
             localStorage.setItem('userName', userIdFromAPI);
-            
+            if (typeof onRetrieveComplete === 'function') {
+                onRetrieveComplete(userIdFromAPI);
+              }
           });
       }, []);
 return (

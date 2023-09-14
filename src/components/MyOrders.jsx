@@ -21,8 +21,7 @@ const MyOrder = ({ onCheckout }) => {
           setorderList(data)
           });
       }, []);
-        const newList = orderList.find((list) => list.first_name == localStorage.getItem('userName'));
-
+        let newList = orderList.filter((list) => list.first_name == localStorage.getItem('userName'));
 
   return (
     <>
@@ -38,16 +37,19 @@ const MyOrder = ({ onCheckout }) => {
         <th>Quantity</th>
         <th>Price</th>
       </tr>
-      {newList && newList.items ? (
-      newList.items.map((item) => (
-        <tr key={item.product.id}>
-          <td>{item.product.name}</td>
-          <td>{item.quantity}</td>
-          <td>${item.price}</td>
-          <td> {/* Add your remove button here */}</td>
-        </tr>
-      ))
-    ) : (
+  
+       {newList.length > 0 ? (
+        newList.map((order) =>
+          order.items.map((item) => (
+            <tr key={item.product.id}>
+              <td>{item.product.name}</td>
+              <td>{item.quantity}</td>
+              <td>${item.price}</td>
+              <td> {/* Add your remove button here */}</td>
+            </tr>
+          ))
+        )
+      ) : (
       <tr>
         <td colSpan="4">No items in the list</td>
       </tr>

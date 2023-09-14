@@ -113,7 +113,7 @@ li{
   color: white;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  height: 65vh;
   background-image: url("./assets/landingImage.jpg");
   background-size:cover;
   background-repeat: no-repeat; 
@@ -152,14 +152,11 @@ li{
 
 .inputStyle{
   font-family: 'Roboto', sans-serif;
-  color: rgb(76, 0, 255);
   font-size: 1.2rem;
   margin: 0 auto;
   padding: 1.5rem 2rem;
   border-radius: 0.2rem;
-  border: none;
   outline: 0;
-  border-bottom: 2px solid rgb(76, 0, 255);
   background-color: rgb(255, 255, 255);
   width: 50%;
   height: 3rem;
@@ -517,4 +514,29 @@ label {
 .btn-number{
   border-radius: 50%;
   margin: 5px;
+}
+
+.filterStyle {
+  font-size: 20px;
+  margin-right: 10%;
+  color: black;
+  background-color: white;
+} 
+.filterStyleh1{
+  font-size: 30px;
+  height: 40px;
+  font-weight: 600;
+  width: 100px;
+  background-color: rgb(201, 201, 201);
+padding-bottom: 0;
+margin-bottom: 0;
+} 
+
+.ulfilter {
+  padding: 0;
+  margin-right: 2%;
+}
+
+.filterLink{
+  color: #000;
 }

@@ -26,7 +26,7 @@ function LoginForm() {
 
       if (response.token) {
         handleLoginSuccess(response.token);
-        IdRetrieve();
+        IdRetrieve(handleRetrieveComplete);
       } else {
         // Handle login failure (e.g., display an error message).
         console.log("Invalid Credentials");
@@ -35,7 +35,10 @@ function LoginForm() {
       console.error('Login error:', error);
     }
   };
-
+  const handleRetrieveComplete = (userName) => {
+    // Do something with the userName if needed
+    console.log(`Retrieved userName: ${userName}`);
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-div">

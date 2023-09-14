@@ -10,7 +10,8 @@ const Checkout = () => {
         phone: '',
         address: '',
         zip: '',
-        items: [],
+        items: JSON.parse(localStorage.getItem('checkoutData')),
+        
       });
 
     const handleChange = (e) => {
@@ -18,9 +19,7 @@ const Checkout = () => {
         setFormData({ ...formData, [name]: value });
       };
     
-      const updateItems = (items) => {
-        setFormData({ ...formData, items });
-      };
+    
 
 
       const handleSubmit = async (e, itemsForCheckout) => {
@@ -33,14 +32,12 @@ const Checkout = () => {
         phone: formData.phone,
         address: formData.address,
         zipcode: formData.zip,
-        items: [ {
-          "product": 2,
-          "quantity": 1 ,
-          "price": 50
-      }]
+        items:  formData.items
+      
         
       }
-      console.log(cartCheck)
+      // console.log(cartCheck)
+      // console.log(localStorage.getItem('checkoutData'))
       try {
         // Send registration data to the server
         const response = await fetch('http://127.0.0.1:8000/order/checkout/', {
@@ -77,7 +74,7 @@ const Checkout = () => {
     <>
 
     <div>
-    <CartItems onCheckout={updateItems} />
+    <CartItems  />
 
 
     <form onSubmit={(e) => handleSubmit(e)}>

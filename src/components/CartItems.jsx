@@ -18,14 +18,14 @@ const CartItems = ({ onCheckout }) => {
   const handleCheckout = () => {
 
     const itemsForCheckout = cart.map((item) => ({
-      productId: item.productId,
+      
+      product: item.productId, 
       quantity: item.quantity,
       price: item.price,
-      name: item.productName, 
+      
     }));
-     console.log('onCheckout prop:', itemsForCheckout);
-     onCheckout(itemsForCheckout);
-     console.log('onChec:', onCheckout);
+   
+     localStorage.setItem('checkoutData', JSON.stringify(itemsForCheckout));
   };
   return (
     <>
@@ -51,14 +51,16 @@ const CartItems = ({ onCheckout }) => {
 
 
       
-      <p>Total Price: ${total.toFixed(2)}</p>
+      
 
 
       {isAuthenticated ? (
+        <>
+        <p>Total Price: ${total.toFixed(2)}</p>
    <Link to="/Checkout">
             <button className="btn btn-outline-dark" onClick={handleCheckout}>Checkout</button>
             </Link>
-  
+  </>
         ) : (
           <Link to="/login">
             <button>Login to Checkout</button>

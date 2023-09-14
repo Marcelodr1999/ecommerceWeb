@@ -11,7 +11,7 @@ import { CartProvider } from './components/Cart'
 import CartItems from './components/CartItems'
 import Checkout from './components/Checkout';
 import MyOrder from './components/MyOrders';
-
+import IdRetrieve from './services/idService';
 function App() {
 
   return (
@@ -27,6 +27,7 @@ function App() {
           <Route path="/orders" element={<MyOrder />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/idr" element={<IdRetrieve />} />
         
 
         </Routes>

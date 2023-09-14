@@ -32,12 +32,12 @@ const addToCartHandler = () => {
              <>
             <div className="product-style">
                 <img className= "productimg" src = {apiTest.get_image} />
-                <div className="">
+                <div className="form-group">
                     <h1>Information</h1>
                     
                     <p>Price: ${apiTest.price}</p>
-                    <input defaultValue = "1"/>
-                    <button onClick = {addToCartHandler}>Add To Cart</button>
+                    <input className="form-control-sm" defaultValue = "1"/><br />
+                    <button className="btn btn-success mt-1" onClick = {addToCartHandler}>Add To Cart</button>
                 </div>
             </div>
             <div>

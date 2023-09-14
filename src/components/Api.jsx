@@ -49,17 +49,18 @@ const runItems = apiTest.map((run) =>
     const uniqueCategoriesArray = Array.from(uniqueCategories);
     return ( 
         <div className="runs-wrapper bg-white rounded-xl h-full w-48 shadow-sx-shadow p-4 flex flex-col">
-                    <h1 className="border-b-2 pb-4">Filter</h1>
-                    <ul>
+                    <div className="row">
+                    <ul className="ulfilter" >
+                    <h1 className="border-b-2 pb-4 filterStyleh1">Filter</h1>
 
                      {uniqueCategoriesArray.map((category) => (
-                      <li key={category}>
-                        <Link to={`/${category}`}>{category}</Link>
+                      <li className="filterStyle" key={category}>
+                        <Link className="filterLink" to={`/${category}`}>{category}</Link>
                       </li>
                       ))}
 
                     </ul>
-                    <div className="row">
+                   
                         {runItems}
                     </div>
 
