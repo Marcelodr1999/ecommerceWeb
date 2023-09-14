@@ -10,6 +10,7 @@ import FilteredPage from './pages/FilteredPage'
 import { CartProvider } from './components/Cart'
 import CartItems from './components/CartItems'
 import Checkout from './components/Checkout';
+import MyOrder from './components/MyOrders';
 
 function App() {
 
@@ -23,8 +24,10 @@ function App() {
           <Route path="/:cat" element={<FilteredPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/cart" element={<CartItems />} />
+          <Route path="/orders" element={<MyOrder />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/register" element={<Register />} />
+        
 
         </Routes>
     

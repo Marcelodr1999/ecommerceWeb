@@ -3,15 +3,30 @@ import { useCart } from './Cart';
 import Navbar from './Navbar';
 import CartButtons from './CartButtons';
 import { Link } from 'react-router-dom';
-const CartItems = () => {
+const CartItems = ({ onCheckout }) => {
+
   const { cart } = useCart();
+
   const calculateTotalPrice = (cart) => {
     return cart.reduce((total, item) => total + item.price , 0);
   };
 
   // Calculate the total price
   const total = calculateTotalPrice(cart);
-  const isAuthenticated = localStorage.getItem('authToken')
+  const isAuthenticated = localStorage.getItem('authToken');
+
+  const handleCheckout = () => {
+
+    const itemsForCheckout = cart.map((item) => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      price: item.price,
+      name: item.productName, 
+    }));
+     console.log('onCheckout prop:', itemsForCheckout);
+     onCheckout(itemsForCheckout);
+     console.log('onChec:', onCheckout);
+  };
   return (
     <>
     <Navbar />
@@ -40,10 +55,10 @@ const CartItems = () => {
 
 
       {isAuthenticated ? (
-          <Link to="/checkout">
-            <button className="btn btn-outline-dark">Checkout</button>
-            
-          </Link>
+   <Link to="/Checkout">
+            <button className="btn btn-outline-dark" onClick={handleCheckout}>Checkout</button>
+            </Link>
+  
         ) : (
           <Link to="/login">
             <button>Login to Checkout</button>

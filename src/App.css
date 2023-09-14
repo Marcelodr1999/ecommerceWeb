@@ -6,9 +6,7 @@
 {
     display: flex;
 }
-button {
-    border-radius: 12%;
-}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -182,7 +180,7 @@ li{
 
 .submitStyle{
   height: 3rem;
-  width:20vh;
+  width:15vh;
   padding: 5%, 10%;
   background-color: rgb(255, 255, 255);
   color: rgb(76, 0, 255);
@@ -190,6 +188,7 @@ li{
   margin-right: auto;
   margin-bottom: 1rem;
   margin-top: 3rem;
+  border-radius: 5%;
   font: 500 0.7rem 'Orbitron', sans-serif;
   border: 1.5px solid rgb(76, 0, 255);
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
@@ -513,4 +512,9 @@ label {
 }
 .form-row {
   display: flex;
+}
+
+.btn-number{
+  border-radius: 50%;
+  margin: 5px;
 }

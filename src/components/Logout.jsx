@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginButton from './LoginButton';
-
+import { Link } from 'react-router-dom';
 function LogoutButton() {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
@@ -13,8 +13,12 @@ function LogoutButton() {
 
   // Conditionally render the login or logout button
   if (isAuthenticated) {
-    return (
+    return (<>
       <button className="btn btn-outline-danger ml-2 my-2 my-sm-0" onClick={handleLogout}>Logout</button>
+      <li className="nav-item">
+      <Link className="nav-link" to="/orders">Orders</Link>
+    </li>
+    </>
     );
   } else {
     return (

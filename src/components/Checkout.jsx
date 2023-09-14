@@ -10,7 +10,7 @@ const Checkout = () => {
         phone: '',
         address: '',
         zip: '',
-        
+        items: [],
       });
 
     const handleChange = (e) => {
@@ -18,11 +18,13 @@ const Checkout = () => {
         setFormData({ ...formData, [name]: value });
       };
     
+      const updateItems = (items) => {
+        setFormData({ ...formData, items });
+      };
 
-      const handleSubmit = async (e) => {
+
+      const handleSubmit = async (e, itemsForCheckout) => {
         e.preventDefault();
-      
-
 
       const cartCheck = {
         first_name: formData.firstName,
@@ -31,14 +33,21 @@ const Checkout = () => {
         phone: formData.phone,
         address: formData.address,
         zipcode: formData.zip,
+        items: [ {
+          "product": 2,
+          "quantity": 1 ,
+          "price": 50
+      }]
         
       }
+      console.log(cartCheck)
       try {
         // Send registration data to the server
-        const response = await fetch('http://127.0.0.1:8000/order/orders/', {
+        const response = await fetch('http://127.0.0.1:8000/order/checkout/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `TOKEN ${localStorage.getItem('authToken')}`
           },
           body: JSON.stringify(cartCheck),
         });
@@ -68,8 +77,10 @@ const Checkout = () => {
     <>
 
     <div>
-      <CartItems />
-      <form onSubmit={handleSubmit}>
+    <CartItems onCheckout={updateItems} />
+
+
+    <form onSubmit={(e) => handleSubmit(e)}>
       <div className='form-row'> 
       
           <div className="form-group">

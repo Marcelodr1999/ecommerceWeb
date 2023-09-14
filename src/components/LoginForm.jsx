@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import authService from '../services/authService';
-
+import IdRetrieve from '../services/idService';
 function LoginForm() {
   const [formData, setFormData] = useState({
     username: '',
@@ -16,8 +16,7 @@ function LoginForm() {
     localStorage.setItem('authToken', token);
     window.location.href = "http://localhost:5173";
 
-    // Redirect to a protected page or perform other actions
-    // Example: history.push('/dashboard');
+
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +26,7 @@ function LoginForm() {
 
       if (response.token) {
         handleLoginSuccess(response.token);
+        IdRetrieve();
       } else {
         // Handle login failure (e.g., display an error message).
         console.log("Invalid Credentials");
